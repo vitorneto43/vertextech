@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vertex | Softwares, Sites, Apps e Automação</title>
+  <meta name="description" content="A Vertex cria softwares, sites, apps e automações para empresas que querem crescer com tecnologia." />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #ffffff;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(0, 184, 255, 0.18), transparent 28%),
+        radial-gradient(circle at 80% 25%, rgba(0, 82, 170, 0.28), transparent 32%),
+        linear-gradient(135deg, #02040a 0%, #03111f 42%, #001f3f 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: auto;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      backdrop-filter: blur(16px);
+      background: rgba(2, 6, 14, 0.76);
+      border-bottom: 1px solid rgba(0, 195, 255, 0.18);
+    }
+
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 4px;
+      font-size: 1.18rem;
+    }
+
+    .brand img {
+      width: 52px;
+      height: 52px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 0 22px rgba(0, 183, 255, 0.35);
+    }
+
+    nav ul {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      gap: 26px;
+    }
+
+    nav a {
+      font-size: 0.95rem;
+      color: #d7ecff;
+      transition: 0.25s ease;
+    }
+
+    nav a:hover {
+      color: #12d8ff;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 24px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 213, 255, 0.46);
+      background: linear-gradient(135deg, #00d4ff, #004dff);
+      color: #fff;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 14px 34px rgba(0, 94, 255, 0.28);
+      transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease;
+      animation: pulseGlow 2.7s infinite;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px) scale(1.03);
+      filter: brightness(1.12);
+      box-shadow: 0 20px 50px rgba(0, 195, 255, 0.38);
+    }
+
+    .btn.secondary {
+      background: rgba(255, 255, 255, 0.06);
+      animation: none;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 14px 34px rgba(0, 94, 255, 0.28); }
+      50% { box-shadow: 0 18px 52px rgba(0, 213, 255, 0.48); }
+    }
+
+    section {
+      padding: 96px 0;
+      position: relative;
+    }
+
+    .hero {
+      padding-top: 150px;
+      min-height: 100vh;
+      display: grid;
+      align-items: center;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 52px;
+      align-items: center;
+    }
+
+    .tag {
+      display: inline-flex;
+      margin-bottom: 18px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 216, 255, 0.28);
+      color: #8befff;
+      background: rgba(0, 153, 255, 0.08);
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 6vw, 5.6rem);
+      line-height: 0.96;
+      letter-spacing: -3px;
+      margin-bottom: 22px;
+    }
+
+    h1 span, h2 span {
+      background: linear-gradient(90deg, #ffffff, #00d8ff, #006dff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.18rem;
+      line-height: 1.75;
+      color: #c7d9eb;
+      max-width: 660px;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .video-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 30px;
+      border: 1px solid rgba(0, 213, 255, 0.26);
+      background: rgba(255, 255, 255, 0.04);
+      box-shadow: 0 34px 90px rgba(0, 0, 0, 0.42);
+      transform: perspective(900px) rotateY(-6deg);
+      transition: 0.4s ease;
+    }
+
+    .video-card:hover {
+      transform: perspective(900px) rotateY(0deg) translateY(-8px);
+    }
+
+    .video-card video {
+      display: block;
+      width: 100%;
+      min-height: 420px;
+      object-fit: cover;
+    }
+
+    .video-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.42), transparent 60%);
+      pointer-events: none;
+    }
+
+    .section-title {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 48px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      margin-bottom: 14px;
+    }
+
+    .section-title p {
+      color: #bed3e8;
+      line-height: 1.7;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      padding: 30px;
+      border-radius: 28px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025));
+      border: 1px solid rgba(0, 213, 255, 0.15);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.24);
+      transition: 0.28s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(0, 213, 255, 0.45);
+      box-shadow: 0 30px 75px rgba(0, 118, 255, 0.18);
+    }
+
+    .icon {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #00d8ff, #003bba);
+      box-shadow: 0 14px 34px rgba(0, 153, 255, 0.28);
+      font-size: 1.5rem;
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+    }
+
+    .card p, .card li {
+      color: #c5d7e8;
+      line-height: 1.65;
+    }
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .step {
+      padding: 24px;
+      border-radius: 24px;
+      border: 1px solid rgba(0, 213, 255, 0.16);
+      background: rgba(0, 0, 0, 0.22);
+    }
+
+    .step strong {
+      color: #00d8ff;
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .solutions {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .logo-showcase {
+      display: grid;
+      place-items: center;
+      padding: 38px;
+      min-height: 420px;
+      border-radius: 34px;
+      border: 1px solid rgba(0, 213, 255, 0.18);
+      background: radial-gradient(circle, rgba(0, 153, 255, 0.14), rgba(0, 0, 0, 0.35));
+    }
+
+    .logo-showcase img {
+      width: min(370px, 100%);
+      border-radius: 24px;
+      box-shadow: 0 0 70px rgba(0, 183, 255, 0.24);
+    }
+
+    .solution-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .solution-item {
+      padding: 20px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.055);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .contact-box {
+      padding: 34px;
+      border-radius: 30px;
+      background: rgba(0, 0, 0, 0.28);
+      border: 1px solid rgba(0, 213, 255, 0.18);
+    }
+
+    .contact-box p {
+      color: #c5d7e8;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: grid;
+      gap: 14px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 16px 18px;
+      border: 1px solid rgba(0, 213, 255, 0.20);
+      border-radius: 18px;
+      outline: none;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.07);
+      font-size: 1rem;
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #00d8ff;
+      box-shadow: 0 0 0 4px rgba(0, 216, 255, 0.08);
+    }
+
+    footer {
+      padding: 44px 0;
+      border-top: 1px solid rgba(0, 213, 255, 0.15);
+      background: rgba(0, 0, 0, 0.36);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr 0.8fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    footer p, footer a {
+      color: #bcd0e2;
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+
+    footer h4 {
+      margin-bottom: 12px;
+      color: #fff;
+    }
+
+    .copy {
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      color: #8fa8bd;
+      font-size: 0.9rem;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 1200;
+      width: 62px;
+      height: 62px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #25d366;
+      color: #fff;
+      font-size: 2rem;
+      font-weight: 900;
+      box-shadow: 0 18px 44px rgba(37, 211, 102, 0.35);
+      animation: whatsappPulse 1.9s infinite;
+    }
+
+    @keyframes whatsappPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: 0.75s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 920px) {
+      nav ul {
+        display: none;
+      }
+
+      .hero-grid,
+      .solutions,
+      .contact-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cards {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .process {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .video-card {
+        transform: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .brand {
+        font-size: 1rem;
+        letter-spacing: 2px;
+      }
+
+      .hero {
+        padding-top: 120px;
+      }
+
+      .cards,
+      .process {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .video-card video {
+        min-height: 300px;
+      }
+
+      section {
+        padding: 76px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#inicio">
+        <img src="assets/vertex-logo.jpeg" alt="Logo Vertex">
+        <span>VERTEX</span>
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#processo">Processo</a></li>
+          <li><a href="#solucoes">Soluções</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn" href="#contato">Solicitar orçamento</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. INÍCIO -->
+    <section id="inicio" class="hero">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <span class="tag">Softwares • Sites • Apps • Automação</span>
+          <h1>Tecnologia que leva sua empresa ao <span>próximo nível.</span></h1>
+          <p>
+            A Vertex cria soluções digitais profissionais para empresas que precisam vender mais,
+            organizar processos, automatizar tarefas e crescer com presença forte na internet.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn" href="#contato">Quero meu projeto</a>
+            <a class="btn secondary" href="#servicos">Ver serviços</a>
+          </div>
+        </div>
+
+        <div class="video-card reveal">
+          <video src="assets/vertex-video.mp4" autoplay muted loop playsinline controls></video>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. SERVIÇOS -->
+    <section id="servicos">
+      <div class="container">
+        <div class="section-title reveal">
+          <h2>O que a <span>Vertex</span> faz</h2>
+          <p>Desenvolvimento sob medida para transformar ideias em produtos digitais reais.</p>
+        </div>
+
+        <div class="cards">
+          <div class="card reveal">
+            <div class="icon">💻</div>
+            <h3>Sites profissionais</h3>
+            <p>Landing pages, sites institucionais, portfólios e páginas de venda com visual moderno e responsivo.</p>
+          </div>
+
+          <div class="card reveal">
+            <div class="icon">📱</div>
+            <h3>Aplicativos</h3>
+            <p>Apps mobile para Android e iOS com telas premium, fluxos funcionais e estrutura pronta para crescer.</p>
+          </div>
+
+          <div class="card reveal">
+            <div class="icon">⚙️</div>
+            <h3>Automações</h3>
+            <p>Automação de processos, relatórios, atendimento, cadastros, integrações e tarefas repetitivas.</p>
+          </div>
+
+          <div class="card reveal">
+            <div class="icon">🧠</div>
+            <h3>IA para empresas</h3>
+            <p>Chatbots, assistentes inteligentes, análise de dados e ferramentas com inteligência artificial.</p>
+          </div>
+
+          <div class="card reveal">
+            <div class="icon">🛒</div>
+            <h3>Sistemas comerciais</h3>
+            <p>Sistemas de pedido, pagamento, dashboard, controle de clientes, vendas, produtos e relatórios.</p>
+          </div>
+
+          <div class="card reveal">
+            <div class="icon">🚀</div>
+            <h3>Consultoria digital</h3>
+            <p>Planejamento técnico para tirar sua ideia do papel com estratégia, segurança e visão de mercado.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. PROCESSO -->
+    <section id="processo">
+      <div class="container">
+        <div class="section-title reveal">
+          <h2>Como funciona o <span>processo</span></h2>
+          <p>Um fluxo direto para entender sua necessidade, montar o projeto e entregar uma solução de verdade.</p>
+        </div>
+
+        <div class="process">
+          <div class="step reveal">
+            <strong>01</strong>
+            <h3>Diagnóstico</h3>
+            <p>Entendemos sua empresa, seu problema e o objetivo do projeto.</p>
+          </div>
+
+          <div class="step reveal">
+            <strong>02</strong>
+            <h3>Orçamento</h3>
+            <p>Você recebe uma proposta clara com escopo, prazo e valor.</p>
+          </div>
+
+          <div class="step reveal">
+            <strong>03</strong>
+            <h3>Desenvolvimento</h3>
+            <p>Criamos a solução com visual profissional e funcionalidades reais.</p>
+          </div>
+
+          <div class="step reveal">
+            <strong>04</strong>
+            <h3>Entrega</h3>
+            <p>Publicamos, testamos e deixamos tudo pronto para uso.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. SOLUÇÕES -->
+    <section id="solucoes">
+      <div class="container solutions">
+        <div class="logo-showcase reveal">
+          <img src="assets/vertex-logo.jpeg" alt="Marca Vertex">
+        </div>
+
+        <div class="reveal">
+          <div class="section-title" style="text-align:left; margin: 0 0 28px;">
+            <h2>Soluções criadas para <span>resultado</span></h2>
+            <p>A Vertex trabalha com projetos digitais úteis, bonitos e pensados para gerar valor real.</p>
+          </div>
+
+          <div class="solution-list">
+            <div class="solution-item">✅ Site para captar clientes e apresentar sua empresa com autoridade.</div>
+            <div class="solution-item">✅ Aplicativo para aproximar sua marca do público e vender melhor.</div>
+            <div class="solution-item">✅ Automação para economizar tempo e reduzir trabalho manual.</div>
+            <div class="solution-item">✅ Sistemas personalizados para organizar vendas, clientes e operações.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. CONTATO -->
+    <section id="contato">
+      <div class="container contact-grid">
+        <div class="contact-box reveal">
+          <span class="tag">Fale com a Vertex</span>
+          <h2>Envie sua mensagem</h2>
+          <p>
+            Descreva o que você precisa: site, aplicativo, automação ou sistema.
+            A mensagem será enviada para o e-mail da Vertex.
+          </p>
+
+          <p><strong>E-mail:</strong><br>vitor.veiga.neto46@gmail.com</p>
+          <p><strong>WhatsApp:</strong><br>+55 81 99251-2747</p>
+
+          <a class="btn" href="https://wa.me/5581992512747" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+        </div>
+
+        <div class="contact-box reveal">
+          <form id="contactForm">
+            <input type="text" id="name" name="name" placeholder="Seu nome" required>
+            <input type="email" id="email" name="email" placeholder="Seu e-mail" required>
+            <input type="text" id="subject" name="subject" placeholder="Assunto" required>
+            <textarea id="message" name="message" placeholder="Descreva seu projeto" required></textarea>
+            <button class="btn" type="submit">Enviar mensagem</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <h4>VERTEX</h4>
+        <p>Softwares, sites, aplicativos e automações para empresas que querem crescer com tecnologia.</p>
+      </div>
+
+      <div>
+        <h4>Navegação</h4>
+        <p><a href="#inicio">Início</a></p>
+        <p><a href="#servicos">Serviços</a></p>
+        <p><a href="#processo">Processo</a></p>
+        <p><a href="#contato">Contato</a></p>
+      </div>
+
+      <div>
+        <h4>Contato</h4>
+        <p>vitor.veiga.neto46@gmail.com</p>
+        <p>WhatsApp: +55 81 99251-2747</p>
+      </div>
+    </div>
+
+    <div class="container copy">
+      © 2026 Vertex. Todos os direitos reservados. Desenvolvimento de soluções digitais profissionais.
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/5581992512747" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">✆</a>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.14 });
+
+    reveals.forEach((el) => observer.observe(el));
+
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const name = encodeURIComponent(document.getElementById('name').value);
+      const email = encodeURIComponent(document.getElementById('email').value);
+      const subject = encodeURIComponent(document.getElementById('subject').value);
+      const message = encodeURIComponent(document.getElementById('message').value);
+
+      const body = `Nome: ${name}%0D%0AE-mail: ${email}%0D%0A%0D%0AMensagem:%0D%0A${message}`;
+      window.location.href = `mailto:vitor.veiga.neto46@gmail.com?subject=${subject}&body=${body}`;
+    });
+  </script>
+</body>
+</html>
